@@ -8,6 +8,7 @@ export default function Dashboard({
   setUsername,
   password,
   setPassword,
+  authenticated
 }) {
     const navigate = useNavigate();
     if (!username.length) {
@@ -38,8 +39,10 @@ export default function Dashboard({
 
 
   return (
+    authenticated ?
     <div className="dashboard-page-container">
-      <h3>Welcome, ${username}</h3>
-    </div>
+      <h3>Welcome, {username}</h3>
+    </div> :
+    <div>You are not logged in</div>
   );
 }

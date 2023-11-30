@@ -8,6 +8,7 @@ import Register from "./components/Register";
 const App = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [authenticated, setAuthenticated] = useState(false);
 
     return (
       <div className="App">
@@ -23,6 +24,8 @@ const App = () => {
                       setUsername={setUsername}
                       password={password}
                       setPassword={setPassword}
+                      authenticated={authenticated}
+                      setAuthenticated={setAuthenticated}
                     />
                   </div>
                 }
@@ -36,6 +39,8 @@ const App = () => {
                       setUsername={setUsername}
                       password={password}
                       setPassword={setPassword}
+                      authenticated={authenticated}
+                      setAuthenticated={setAuthenticated}
                     />
                   </div>
                 }
@@ -46,6 +51,8 @@ const App = () => {
                   <div className="dashboard-page">
                     <Dashboard
                       username={username}
+                      authenticated={authenticated}
+                      setAuthenticated={setAuthenticated}
                     />
                   </div>
                 }

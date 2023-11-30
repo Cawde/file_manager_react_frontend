@@ -7,6 +7,8 @@ export default function Login({
   setUsername,
   password,
   setPassword,
+  authenticated,
+  setAuthenticated
 }) {
   const navigate = useNavigate();
   function loginUser(event) {
@@ -25,6 +27,9 @@ export default function Login({
       .then((result) => {
         if(result.success) {
           alert(result.success);
+          console.log(result);
+          setPassword(result.hash);
+          setAuthenticated(true);
           navigate(`/dashboard`);
         } else {
           alert(result.message);

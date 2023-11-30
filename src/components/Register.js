@@ -7,6 +7,8 @@ export default function Register({
   setUsername,
   password,
   setPassword,
+  authenticated,
+  setAuthenticated
 }) {
   const navigate = useNavigate();
   function registerUser(event) {
@@ -25,6 +27,8 @@ export default function Register({
       .then((result) => {
         if(result.success) {
           alert(result.success);
+          setPassword(result.hash);
+          setAuthenticated(true);
           navigate(`/dashboard`);
         } else {
           alert(result.message);
