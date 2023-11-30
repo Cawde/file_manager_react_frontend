@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Login } from "./components";
+import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
+
+const App = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    return (
+      <div className="App">
+        <Router>
+          <main>
+            <Routes>
+              <Route
+                path="/login"
+                element={
+                  <div className="login-page">
+                    <Login
+                      username={username}
+                      setUsername={setUsername}
+                      password={password}
+                      setPassword={setPassword}
+                    />
+                  </div>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <div className="login-page">
+                    <Register
+                      username={username}
+                      setUsername={setUsername}
+                      password={password}
+                      setPassword={setPassword}
+                    />
+                  </div>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <div className="dashboard-page">
+                    <Dashboard
+                      username={username}
+                    />
+                  </div>
+                }
+                />
+            </Routes>
+          </main>
+        </Router>
+        </div>
+      );
 }
 
 export default App;
