@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
-
-
+import UploadFile from './components/userUtils/AddFile';
+import FileDownload from './components/userUtils/DownloadFile';
 export default function Dashboard({
   username,
   setUsername,
@@ -11,6 +11,8 @@ export default function Dashboard({
   authenticated
 }) {
     const navigate = useNavigate();
+    const userId = '2';
+
     if (!username.length) {
         navigate(`/login`);
     }
@@ -42,6 +44,8 @@ export default function Dashboard({
     authenticated ?
     <div className="dashboard-page-container">
       <h3>Welcome, {username}</h3>
+      <UploadFile/>
+      <FileDownload userId={userId}/>
     </div> :
     <div>You are not logged in</div>
   );
